@@ -1,7 +1,7 @@
 node-red-contrib-sqldbs
 =========================
 [Node-RED](http://nodered.org) nodes to work with a database 
-in a database that can be MSSQL, MySQL, SQLite, and PostgreSQL.
+that can be either MSSQL, MySQL, SQLite, or PostgreSQL server.
 
 Install
 -------
@@ -32,24 +32,29 @@ You will need to fill in the following fields:
 -- Query Type that the query is for.  It can be either select, insert, update, and delete
 
 
-Output node usage:
+Node usage:
 ------------------
 
-The output node will have the value from msg.payload.  
+The returned data will be stored in msg.payload and it will contains two array.  
+You should just need to access the first object of the array to retrieve data
+returned from the database query.  
 
-So for example, you might create a function node that flows into your sqldb output node
-with code like this:
+So for example, you might create a function node that flows into your sqldbs node
+with code like this to find if the user exists in the table (please make a special
+note to "as count".  It will serve as the key of the return to retrieve the data. 
+However, if you use "select * from user", the column name will serve as the key
+name):
 
 ```
-msg.payload = 
-{
-  TS : 'TIMESTAMP',
-  SCREENNAME : msg.tweet.user.screen_name,
-  TWEET : msg.payload,
-  SENTIMENT : msg.sentiment.score,
-  LOCATION : msg.location
-}
+msg.topic = "select count(*) as count from user where username = '" + msg.payload.username + "'";
 return msg;
+```
+
+Then, you can use a switch function after sqldbs node to check if the user exist:
+
+```
+if msg.payload[0][0].count > 0 
+if msg.payload[0][0].count <= 0
 ```
 
 Authors
