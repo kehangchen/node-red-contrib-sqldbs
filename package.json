@@ -3,7 +3,11 @@
   "version": "1.1.0",
   "description": "Node-RED node to access different database engines",
   "dependencies": {
+    "mysql2": "^1.2.0",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^3.30.4",
+    "sqlite3": "^3.1.8",
     "tedious": "^2.0.0"
   },
   "repository": {

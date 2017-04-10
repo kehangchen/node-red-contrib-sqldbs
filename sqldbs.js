@@ -27,15 +27,16 @@ module.exports = function(RED) {
         this.connected = false;
         this.connecting = false;
         this.dbname = n.db;
+        this.dialect = n.dialect;
         var node = this;
 
         function doConnect() {
-            //console.log("doConnect");
+            console.log("dialect: " + node.dialect);
 			node.connecting = true;
             //console.log(node.credentials.password);
 			node.connection = new Sequelize(node.dbname, node.credentials.user, node.credentials.password, {
                 host: node.host,
-                dialect: 'sqldbs',
+                dialect: node.dialect,
                 pool: {
                     max: 5,
                     min: 0,
@@ -82,7 +83,7 @@ module.exports = function(RED) {
                 done();
             } else {
                 done();
-                util.log("connection is closing 3");
+                util.log("connection is closing");
             }
         });
     }
