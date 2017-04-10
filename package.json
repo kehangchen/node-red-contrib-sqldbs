@@ -1,0 +1,28 @@
+{
+    "name"         : "node-red-contrib-sqldbs",
+    "version"      : "1.0.0",
+    "description"  : "Node-RED node to access different database engines",
+    "dependencies" : {
+        "sequelize": "^3.30.4",
+        "tedious": "^2.0.0"
+    },
+    "repository" : {
+        "type" : "git",
+        "url"  : "https://github.com/kehangchen/node-red-contrib-sqldbs.git"
+    },
+    "license"  : "Apache",
+    "keywords" : [ "node-red", "sqldb", "mssql", "mysql", "sqllite" ],
+    "node-red" : {
+        "nodes" : {
+            "sqldbs" : "sqldbs.js"
+        }
+    },
+    "author" : {
+        "name" : "Kehang Chen"
+    },
+    "contributors" : [
+        { 
+          "name": "Kehang Chen"
+        }
+    ]
+}
