@@ -57,6 +57,9 @@ if msg.payload[0][0].count > 0
 if msg.payload[0][0].count <= 0
 ```
 
+Currently, it only supports MSSQL server until option is added to UI to allow
+selection of different database dialect.
+
 Authors
 -------
-* [Kehang Chen]
+* Kehang Chen

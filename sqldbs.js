@@ -19,7 +19,7 @@ module.exports = function(RED) {
     var Sequelize = require('sequelize');
     var util = require("util");
     function sqldbsNode(n) {
-        console.dir(n);
+        //console.dir(n);
 		RED.nodes.createNode(this,n);
         this.host = n.host;
         this.port = n.port;
@@ -32,7 +32,7 @@ module.exports = function(RED) {
         function doConnect() {
             //console.log("doConnect");
 			node.connecting = true;
-            console.log(node.credentials.password);
+            //console.log(node.credentials.password);
 			node.connection = new Sequelize(node.dbname, node.credentials.user, node.credentials.password, {
                 host: node.host,
                 dialect: 'sqldbs',
@@ -42,7 +42,7 @@ module.exports = function(RED) {
                     idle: 10000
                 },
             });
-			console.log(node.host);
+			//console.log(node.host);
 
             node.connection.sync().then(function() {
                 node.connected = true;
@@ -55,17 +55,17 @@ module.exports = function(RED) {
             });
         }
         this.connect = function() {
-            console.log("calling connect");
+            //console.log("calling connect");
 			if (!this.connected && !this.connecting) {
                 doConnect();
             }
         }
         this.on('close', function (done) {
-            console.log("close is called");
+            //console.log("close is called");
             if (this.tick) { clearTimeout(this.tick); }
-            console.log("close is called 1");
+            //console.log("close is called 1");
             if (this.connection) {
-                console.log("close is called 2");
+                //console.log("close is called 2");
                 try {
                     /*node.connection.connectionManager.close()(function(err) {
                         util.log("connection is closing 1");
@@ -97,14 +97,14 @@ module.exports = function(RED) {
         //console.dir(n);
 		this.mydb = n.mydb;
         this.querytype = n.querytype;
-        console.log("Query Type 2: " + this.querytype);
+        //console.log("Query Type 2: " + this.querytype);
         this.mydbConfig = RED.nodes.getNode(this.mydb);
         if (this.mydbConfig) {
             this.mydbConfig.connect();
             var node = this;
             node.on("input", function(msg) {
                 if (typeof msg.topic === 'string') {
-                    console.dir(node.mydbConfig.connection);
+                    //console.dir(node.mydbConfig.connection);
                     var qtype = node.mydbConfig.connection.QueryTypes.SELECT;
                     if (node.querytype == "select")
                         qtype = node.mydbConfig.connection.QueryTypes.SELECT;
