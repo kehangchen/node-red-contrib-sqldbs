@@ -42,8 +42,6 @@
         category: 'config',
         defaults: {
             host: {value:"127.0.0.1",required:true},
-            //user: {value:"",required:true},
-            //pass: {value:"",required:true},
             db: {value:"",required:true},
             dialect: {value:"mssql",required:true}
         },
@@ -52,7 +50,12 @@
             password: {type: "password"}
         },
         label: function() {
-            return this.db;
+            if (this.name)
+                return this.name;
+            else if (this.db)
+                return this.db;
+            ekse
+                return "sqldbs";
         }
     });
 </script>
