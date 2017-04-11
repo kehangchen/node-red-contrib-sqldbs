@@ -29,6 +29,8 @@ You will need to fill in the following fields:
 
 -- Database name
 
+-- Dialect for different database engines, currently, it supports MSSQL, MYSQL, SQLite, and PostgreSQL. 
+
 -- Query Type that the query is for.  It can be either select, insert, update, and delete
 
 
@@ -57,9 +59,9 @@ if msg.payload[0][0].count > 0
 if msg.payload[0][0].count <= 0
 ```
 
-Currently, it only supports MSSQL server until option is added to UI to allow
-selection of different database dialect.
+Currently, only MSSQL server database have been tested but not others.  Please let
+me know if you have any issue.
 
 Authors
 -------
-* Kehang Chen
+* Kehang Chen - [kehangchen@yahoo.com](mailto:kehangchen@yahoo.com)
