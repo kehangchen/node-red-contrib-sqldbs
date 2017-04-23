@@ -16,6 +16,10 @@
         <input type="text" id="node-config-input-host" placeholder="Database Server Name">
     </div>
     <div class="form-row">
+        <label for="node-config-input-port"><i class="fa fa-globe"></i> Port</label>
+        <input type="text" id="node-config-input-port" placeholder="Database Server Port">
+    </div>
+    <div class="form-row">
         <label for="node-config-input-user"><i class="fa fa-user"></i> User</label>
         <input type="text" id="node-config-input-user" placeholder="Username">
     </div>
@@ -33,7 +37,7 @@
             <option value="mssql">MSSQL</option>
             <option value="mysql">MySQL</option>
             <option value="sqlite">SQLite</option>
-            <option value="postgresql">PostgreSQL</option>
+            <option value="postgres">PostgreSQL</option>
         </select>
     </div>    
 </script>
@@ -42,6 +46,7 @@
         category: 'config',
         defaults: {
             host: {value:"127.0.0.1",required:true},
+            port: {value:"", required:false},
             db: {value:"",required:true},
             dialect: {value:"mssql",required:true}
         },
@@ -54,7 +59,7 @@
                 return this.name;
             else if (this.db)
                 return this.db;
-            ekse
+            else
                 return "sqldbs";
         }
     });

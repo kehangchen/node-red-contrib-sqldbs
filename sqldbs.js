@@ -36,6 +36,7 @@ module.exports = function(RED) {
             //console.log(node.credentials.password);
 			node.connection = new Sequelize(node.dbname, node.credentials.user, node.credentials.password, {
                 host: node.host,
+                port: node.port,
                 dialect: node.dialect,
                 pool: {
                     max: 5,
@@ -43,14 +44,14 @@ module.exports = function(RED) {
                     idle: 10000
                 },
             });
-			//console.log(node.host);
+			console.dir(node.connection);
 
             node.connection.sync().then(function() {
                 node.connected = true;
-                util.log("Database connection successful");
+                util.log("Connection successful for database " + node.dbname + " with user " + node.credentials.user);
             }, function(err) {
                 node.connected = false;
-                util.log("Database connection failed.  Retry...");
+                util.log("Connection failed for database " + node.dbname + " with user " + node.credentials.user + ". Retry...");
                 node.error(err);
                 doConnect();
             });
