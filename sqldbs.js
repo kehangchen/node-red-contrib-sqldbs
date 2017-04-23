@@ -19,7 +19,7 @@ module.exports = function(RED) {
     var Sequelize = require('sequelize');
     var util = require("util");
     function sqldbsNode(n) {
-        //console.dir(n);
+        console.dir(n);
 		RED.nodes.createNode(this,n);
         this.host = n.host;
         this.port = n.port;
