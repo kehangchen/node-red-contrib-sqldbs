@@ -24,7 +24,7 @@
         <input type="text" id="node-config-input-user" placeholder="Username">
     </div>
         <div class="form-row">
-        <label for="node-config-input-pass"><i class="fa fa-lock"></i> Password</label>
+        <label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
         <input type="password" id="node-config-input-password" placeholder="Password">
     </div>
     <div class="form-row">
@@ -33,22 +33,22 @@
     </div>
     <div class="form-row">
         <label for="node-config-input-dialect"><i class="fa fa-language"></i> Dialect</label>
-            <select type="text" id="node-input-dialect" style="width:70%;">
+        <select type="text" id="node-config-input-dialect" style="width:70%;">
             <option value="mssql">MSSQL</option>
             <option value="mysql">MySQL</option>
             <option value="sqlite">SQLite</option>
             <option value="postgres">PostgreSQL</option>
         </select>
-    </div>    
+    </div>  
 </script>
 <script type="text/javascript">
     RED.nodes.registerType('sqldbsdatabase',{
         category: 'config',
         defaults: {
             host: {value:"127.0.0.1",required:true},
-            port: {value:"", required:false},
+            port: {value:1433, required:false},
             db: {value:"",required:true},
-            dialect: {value:"",required:true}
+            dialect: {value:"mssql",required:true}
         },
         credentials: {
             user: {type: "text"},
