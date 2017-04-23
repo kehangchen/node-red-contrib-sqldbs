@@ -59,7 +59,7 @@ if msg.payload[0][0].count > 0
 if msg.payload[0][0].count <= 0
 ```
 
-Currently, only MSSQL server database have been tested but not others.  Please let
+Currently, only MSSQL server and MySQL have been tested but not others.  Please let
 me know if you have any issue.
 
 Authors
